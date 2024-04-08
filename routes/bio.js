@@ -4,10 +4,13 @@ const router = express.Router()
 const User = require('../models/user')
 
 
-
-router.get('/',requiresAuth(),async (req,res)=>{
+router.post('/',requiresAuth(),async (req,res)=>{
     const dbUser = await User.findOne({email:req.oidc.user.email})
-    res.render('profile',{title:'Profile',user:req.oidc.user,bio:dbUser.bio})
+    dbUser.bio = req.body.bio
+    dbUser.save()
+        .then(res.redirect('/profile'))
+
+
 })
 
 module.exports = router

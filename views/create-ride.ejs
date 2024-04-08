@@ -1,0 +1,49 @@
+<html lang="en">
+    <%- include('modules/head.ejs')%>
+<body>
+    <%- include('modules/nav.ejs')%>
+    <div class="container mt-5">
+        <h2>Create Ride</h2>
+        <form action="/create-ride" method="post">
+            <!-- Source Address Input -->
+            <div class="form-group">
+                <label for="sourceAddress">Source Address</label>
+                <select class="form-control" id="sourceAddress" name="sourceAddress">
+                    <option value="" selected>Select a Governorate</option>
+                    <% governorates.forEach(governorate => { %>
+                        <option value="<%= governorate %>"><%= governorate %></option>
+                    <% }); %>
+                </select>
+            </div>
+            <!-- Destination Address Input -->
+            <div class="form-group">
+                <label for="destinationAddress">Destination Address</label>
+                <select class="form-control" id="destinationAddress" name="destinationAddress">
+                    <option value="" selected>Select a Governorate</option>
+                    <% governorates.forEach(governorate => { %>
+                        <option value="<%= governorate %>"><%= governorate %></option>
+                    <% }); %>
+                </select>
+            </div>
+            <!-- Date Input -->
+            <div class="form-group">
+                <label for="rideDate">Date</label>
+                <input type="date" class="form-control" id="rideDate" name="rideDate">
+            </div>
+            <!-- Hour Input -->
+            <div class="form-group">
+                <label for="rideHour">Hour</label>
+                <input type="time" class="form-control" id="rideHour" name="rideHour">
+            </div>
+            <!-- Seats Left Input -->
+            <div class="form-group">
+                <label for="seatsLeft">Seats Left</label>
+                <input type="number" class="form-control" id="seatsLeft" name="seatsLeft" min="1">
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Create Ride</button>
+        </form>
+    </div>
+    
+</body>
+</html>
