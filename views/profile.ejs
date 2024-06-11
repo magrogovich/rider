@@ -1,24 +1,26 @@
 <html lang="en">
-    <%- include('modules/head.ejs')%>
-<body>
+  <%- include('modules/head.ejs')%>
+  <body>
     <%- include('modules/nav.ejs')%>
     <div class="profile-card">
-        <div class="avatar"><img src="<%=user.picture%>" alt="profile-img"></div>
-        <div class="salutation">
-          <div class="name"><%=user.nickname%></div>
-          <div class="designation"><%=user.email%></div>
-          <% if(bio){%>
-            <div class="bio"><%=bio%></div>
-          <% }%>
-          </div>
-        <div class="profile-bio" >
-            <form action="/profile-bio" method="post">
-                <input type="text" name="bio" placeholder="Add Bio...">
-                <button type="submit"><img src="/images/send.svg" alt=""></button>
-            </form>
-        </div>
+      <div class="avatar">
+        <img src="<%=user.picture%>" alt="profile-img" />
       </div>
-      <p><%= JSON.stringify(user, null, 2)%></p>
-      <script src="/javascripts/profile.js"></script>
-</body>
+      <div class="salutation">
+        <div class="name"><%=user.nickname%></div>
+        <div class="designation"><%=user.email%></div>
+        <% if(bio){%>
+        <div class="bio"><%=bio%></div>
+        <% }%>
+      </div>
+      <div class="profile-bio">
+        <form action="/profile-bio" method="post">
+          <input type="text" name="bio" placeholder="Add Phone Number..." />
+          <button type="submit"><img src="/images/send.svg" alt="" /></button>
+        </form>
+      </div>
+    </div>
+    <p><%= JSON.stringify(user, null, 2)%></p>
+    <script src="/javascripts/profile.js"></script>
+  </body>
 </html>

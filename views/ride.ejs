@@ -1,0 +1,36 @@
+<html lang="en">
+  <%- include('modules/head.ejs')%>
+  <body>
+    <%- include('modules/nav.ejs')%>
+    <div class="container mt-5">
+      <div class="card">
+        <div class="card-body text-center">
+          <img
+            src="<%= data.picture %>"
+            alt="Profile Picture"
+            class="rounded-circle mb-3"
+            width="150"
+          />
+          <h4 class="card-title"><%= data.nickname %></h4>
+          <p class="card-text"><%= data.bio %></p>
+          <p><strong>From:</strong> <%= data.sourceAddress %></p>
+          <p><strong>To:</strong> <%= data.destinationAddress %></p>
+          <p>
+            <strong>Date:</strong> <%= new
+            Date(data.rideDate).toLocaleDateString() %>
+          </p>
+          <p><strong>Time:</strong> <%= data.rideHour %></p>
+          <p><strong>Seats Left:</strong> <%= data.seatsLeft %></p>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a
+          href="https://wa.me/<%= data.bio%>?text=Hi%20<%= data.nickname %>!%20I'm%20interested%20in%20the%20ride%20from%20<%= data.sourceAddress %>%20to%20<%= data.destinationAddress %>%20on%20<%= new Date(data.rideDate).toLocaleDateString() %>%20at%20<%= data.rideHour %>.%20Are%20there%20any%20seats%20left?"
+          class="btn btn-success"
+        >
+          <i class="fab fa-whatsapp"></i> Contact via WhatsApp
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
