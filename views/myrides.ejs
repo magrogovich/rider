@@ -1,0 +1,33 @@
+<html lang="en">
+  <%- include('modules/head.ejs') %>
+  <body>
+    <%- include('modules/nav.ejs') %>
+    <div class="container mt-5">
+      <% data.forEach(ride => { %>
+      <div class="card mb-4">
+        <div class="card-body text-center">
+          <h4 class="card-title">Ride Details</h4>
+          <p><strong>From:</strong> <%= ride.sourceAddress %></p>
+          <p><strong>To:</strong> <%= ride.destinationAddress %></p>
+          <p>
+            <strong>Date:</strong> <%= new
+            Date(ride.rideDate).toLocaleDateString() %>
+          </p>
+          <p><strong>Time:</strong> <%= ride.rideHour %></p>
+          <p><strong>Seats Left:</strong> <%= ride.seatsLeft %></p>
+        </div>
+        <div class="text-center mt-4 mb-2">
+          <a href="/edit/<%= ride._id %>" class="btn btn-primary">
+            <i class="fas fa-edit"></i> Edit
+          </a>
+          <form action="/delete/<%= ride._id %>" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger">
+              <i class="fas fa-trash-alt"></i> Delete
+            </button>
+          </form>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>
