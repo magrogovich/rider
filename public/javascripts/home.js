@@ -1,51 +1,46 @@
 console.clear();
 
-const themeButtons = document.querySelectorAll('.c-theme');
-
-themeButtons.forEach(theme => {
-  theme.addEventListener('click', () => {
-    document.documentElement.classList.toggle('theme--dark');
-  });
-});
-
 const flights = [
-{
-  departTime: '11:45 AM',
-  arriveTime: '4:50 PM',
-  points: '36,750',
-  flightTime: '8h 5m',
-  dollars: '$527' },
-{
-  departTime: '12:00 PM',
-  arriveTime: '6:45 PM',
-  points: '32,490',
-  flightTime: '9h 45min',
-  dollars: '$532' },
-{
-  departTime: '12:00 PM',
-  arriveTime: '7:50 PM',
-  points: '30,620',
-  flightTime: '10h 50m',
-  dollars: '$450' },
-{
-  departTime: '12:10 PM',
-  arriveTime: '7:50 PM',
-  points: '25,033',
-  flightTime: '10h 40m',
-  dollars: '$373' }];
-
-
+  {
+    departTime: "11:45 AM",
+    arriveTime: "4:50 PM",
+    points: "36,750",
+    flightTime: "8h 5m",
+    dollars: "$527",
+  },
+  {
+    departTime: "12:00 PM",
+    arriveTime: "6:45 PM",
+    points: "32,490",
+    flightTime: "9h 45min",
+    dollars: "$532",
+  },
+  {
+    departTime: "12:00 PM",
+    arriveTime: "7:50 PM",
+    points: "30,620",
+    flightTime: "10h 50m",
+    dollars: "$450",
+  },
+  {
+    departTime: "12:10 PM",
+    arriveTime: "7:50 PM",
+    points: "25,033",
+    flightTime: "10h 40m",
+    dollars: "$373",
+  },
+];
 
 const renderPoints = () => {
-  flights.forEach(flight => {
-    const newFlight = document.createElement('li');
-    newFlight.classList = 'c-list__item';
-    newFlight.setAttribute('data-price', `${flight.dollars}`);
-    newFlight.setAttribute('data-departure', `${flight.departTime}`);
-    newFlight.setAttribute('data-arrival', `${flight.arriveTime}`);
-    newFlight.setAttribute('data-points', `${flight.points}`);
-    newFlight.setAttribute('data-time', `${flight.flightTime}`);
-    newFlight.setAttribute('data-payment', 'points');
+  flights.forEach((flight) => {
+    const newFlight = document.createElement("li");
+    newFlight.classList = "c-list__item";
+    newFlight.setAttribute("data-price", `${flight.dollars}`);
+    newFlight.setAttribute("data-departure", `${flight.departTime}`);
+    newFlight.setAttribute("data-arrival", `${flight.arriveTime}`);
+    newFlight.setAttribute("data-points", `${flight.points}`);
+    newFlight.setAttribute("data-time", `${flight.flightTime}`);
+    newFlight.setAttribute("data-payment", "points");
     newFlight.innerHTML = `
 			<button class="c-list__link c-media">
 				<div class="c-media__content">
@@ -64,37 +59,38 @@ const renderPoints = () => {
 			</button>
 		`;
 
-    newFlight.addEventListener('click', () => {
-      if (!newFlight.classList.contains('c-schedule--active')) {
-        if (newFlight.parentNode.querySelector('.c-schedule--active')) {
-          newFlight.parentNode.querySelector('.c-schedule--active').
-          classList.remove('c-schedule--active');
+    newFlight.addEventListener("click", () => {
+      if (!newFlight.classList.contains("c-schedule--active")) {
+        if (newFlight.parentNode.querySelector(".c-schedule--active")) {
+          newFlight.parentNode
+            .querySelector(".c-schedule--active")
+            .classList.remove("c-schedule--active");
         }
-        newFlight.classList.add('c-schedule--active');
+        newFlight.classList.add("c-schedule--active");
         renderActiveData();
-        document.getElementById('flightActions').style.display = 'block';
+        document.getElementById("flightActions").style.display = "block";
       } else {
-        if (newFlight.classList.contains('c-schedule--active')) {
-          newFlight.classList.remove('c-schedule--active');
-          document.getElementById('flightActions').style.display = 'none';
+        if (newFlight.classList.contains("c-schedule--active")) {
+          newFlight.classList.remove("c-schedule--active");
+          document.getElementById("flightActions").style.display = "none";
         }
       }
     });
 
-    document.getElementById('flightList').appendChild(newFlight);
+    document.getElementById("flightList").appendChild(newFlight);
   });
 };
 
 const renderDollars = () => {
-  flights.forEach(flight => {
-    const newFlight = document.createElement('li');
-    newFlight.classList = 'c-list__item';
-    newFlight.setAttribute('data-price', `${flight.dollars}`);
-    newFlight.setAttribute('data-departure', `${flight.departTime}`);
-    newFlight.setAttribute('data-arrival', `${flight.arriveTime}`);
-    newFlight.setAttribute('data-points', `${flight.points}`);
-    newFlight.setAttribute('data-time', `${flight.flightTime}`);
-    newFlight.setAttribute('data-payment', 'dollars');
+  flights.forEach((flight) => {
+    const newFlight = document.createElement("li");
+    newFlight.classList = "c-list__item";
+    newFlight.setAttribute("data-price", `${flight.dollars}`);
+    newFlight.setAttribute("data-departure", `${flight.departTime}`);
+    newFlight.setAttribute("data-arrival", `${flight.arriveTime}`);
+    newFlight.setAttribute("data-points", `${flight.points}`);
+    newFlight.setAttribute("data-time", `${flight.flightTime}`);
+    newFlight.setAttribute("data-payment", "dollars");
     newFlight.innerHTML = `
 			<button class="c-list__link c-media">
 				<div class="c-media__content">
@@ -113,60 +109,61 @@ const renderDollars = () => {
 			</button>
 		`;
 
-    newFlight.addEventListener('click', () => {
-      if (!newFlight.classList.contains('c-schedule--active')) {
-        if (newFlight.parentNode.querySelector('.c-schedule--active')) {
-          newFlight.parentNode.querySelector('.c-schedule--active').
-          classList.remove('c-schedule--active');
+    newFlight.addEventListener("click", () => {
+      if (!newFlight.classList.contains("c-schedule--active")) {
+        if (newFlight.parentNode.querySelector(".c-schedule--active")) {
+          newFlight.parentNode
+            .querySelector(".c-schedule--active")
+            .classList.remove("c-schedule--active");
         }
-        newFlight.classList.add('c-schedule--active');
+        newFlight.classList.add("c-schedule--active");
         renderActiveData();
-        document.getElementById('flightActions').style.display = 'block';
+        document.getElementById("flightActions").style.display = "block";
       } else {
-        if (newFlight.classList.contains('c-schedule--active')) {
-          newFlight.classList.remove('c-schedule--active');
-          document.getElementById('flightActions').style.display = 'none';
+        if (newFlight.classList.contains("c-schedule--active")) {
+          newFlight.classList.remove("c-schedule--active");
+          document.getElementById("flightActions").style.display = "none";
         }
       }
     });
 
-    document.getElementById('flightList').appendChild(newFlight);
+    document.getElementById("flightList").appendChild(newFlight);
   });
 };
 
 renderDollars();
 
-const toggleBtns = document.querySelectorAll('.c-toggle__btn');
+const toggleBtns = document.querySelectorAll(".c-toggle__btn");
 
-toggleBtns.forEach(toggle => {
-  toggle.addEventListener('click', () => {
+toggleBtns.forEach((toggle) => {
+  toggle.addEventListener("click", () => {
     const paymentType = toggle.dataset.payment;
-    document.getElementById('flightActions').style.display = 'none';
-    if (!toggle.classList.contains('c-toggle__btn--active')) {
-      toggle.parentNode.querySelector('.c-toggle__btn--active').
-      classList.remove('c-toggle__btn--active');
-      toggle.classList.add('c-toggle__btn--active');
-      if (paymentType == 'dollars') {
-        document.getElementById('flightList').innerHTML = '';
+    document.getElementById("flightActions").style.display = "none";
+    if (!toggle.classList.contains("c-toggle__btn--active")) {
+      toggle.parentNode
+        .querySelector(".c-toggle__btn--active")
+        .classList.remove("c-toggle__btn--active");
+      toggle.classList.add("c-toggle__btn--active");
+      if (paymentType == "dollars") {
+        document.getElementById("flightList").innerHTML = "";
         renderDollars();
       } else {
-        document.getElementById('flightList').innerHTML = '';
+        document.getElementById("flightList").innerHTML = "";
         renderPoints();
       }
     } else {
-
     }
   });
 });
 
-const selectContainer = document.getElementById('selectFlights');
-const reviewContainer = document.getElementById('reviewFlights');
+const selectContainer = document.getElementById("selectFlights");
+const reviewContainer = document.getElementById("reviewFlights");
 
-const confirmBtn = document.getElementById('confirm');
-const backBtn = document.getElementById('back');
+const confirmBtn = document.getElementById("confirm");
+const backBtn = document.getElementById("back");
 
 const renderActiveData = () => {
-  const activeItem = document.querySelector('.c-schedule--active');
+  const activeItem = document.querySelector(".c-schedule--active");
   const departureTime = activeItem.dataset.departure;
   const arrivalTime = activeItem.dataset.arrival;
   const pointsVal = activeItem.dataset.points;
@@ -175,33 +172,35 @@ const renderActiveData = () => {
   const payment = activeItem.dataset.payment;
 
   let activeValues = [
-  departureTime,
-  arrivalTime,
-  pointsVal,
-  dollarVal,
-  flightTime];
-
+    departureTime,
+    arrivalTime,
+    pointsVal,
+    dollarVal,
+    flightTime,
+  ];
 
   console.log(payment);
 
-  if (payment == 'points') {
-    document.getElementById('activeCost').innerHTML = ' <small class="u-text--b-default">(points)</small> -' + activeValues[2];
-    document.getElementById('total').innerHTML = activeValues[2];
+  if (payment == "points") {
+    document.getElementById("activeCost").innerHTML =
+      ' <small class="u-text--b-default">(points)</small> -' + activeValues[2];
+    document.getElementById("total").innerHTML = activeValues[2];
   } else {
-    document.getElementById('activeCost').innerHTML = '-' + activeValues[3] + '.00';
-    document.getElementById('total').innerHTML = activeValues[3] + '.00';
+    document.getElementById("activeCost").innerHTML =
+      "-" + activeValues[3] + ".00";
+    document.getElementById("total").innerHTML = activeValues[3] + ".00";
   }
 
-  document.getElementById('departureTime').innerHTML = activeValues[0];
-  document.getElementById('arrivalTime').innerHTML = activeValues[1];
+  document.getElementById("departureTime").innerHTML = activeValues[0];
+  document.getElementById("arrivalTime").innerHTML = activeValues[1];
 };
 
-confirmBtn.addEventListener('click', () => {
-  selectContainer.style.display = 'none';
-  reviewContainer.style.display = 'block';
+confirmBtn.addEventListener("click", () => {
+  selectContainer.style.display = "none";
+  reviewContainer.style.display = "block";
 });
 
-backBtn.addEventListener('click', () => {
-  selectContainer.style.display = 'block';
-  reviewContainer.style.display = 'none';
+backBtn.addEventListener("click", () => {
+  selectContainer.style.display = "block";
+  reviewContainer.style.display = "none";
 });

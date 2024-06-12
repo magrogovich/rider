@@ -10,6 +10,7 @@ const createRide = require("./routes/create-ride");
 const bio = require("./routes/bio");
 const ride = require("./routes/ride");
 const myrides = require("./routes/myrides");
+const deleteRide = require("./routes/delete-ride");
 
 const app = express();
 
@@ -49,3 +50,5 @@ app.use("/create-ride", createRide);
 app.use("/profile-bio", bio);
 app.use("/ride", ride);
 app.use("/myrides", myrides);
+app.use("/edit", myrides);
+app.use("/delete", deleteRide);
